@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, 3.10]
+        python-version: ['3.7', '3.8', '3.9', '3.10']
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -31,8 +31,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          python --version
           python -m pip install -U pip
-          pip install flake8 pytest
+          pip install flake8 pytest pytest-custom_exit_code
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with flake8
         run: |
@@ -41,5 +42,4 @@ jobs:
           flake8 . --count --exit-zero --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest -sv
-  
+          pytest -sv --suppress-no-test-exit-code
