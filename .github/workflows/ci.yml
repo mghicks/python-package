@@ -33,7 +33,7 @@ jobs:
         run: |
           python --version
           python -m pip install -U pip
-          pip install flake8 pytest pytest-custom_exit_code
+          pip install flake8 pytest pytest-cov pytest-custom_exit_code
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with flake8
         run: |
@@ -42,4 +42,4 @@ jobs:
           flake8 . --count --exit-zero --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest -sv --suppress-no-test-exit-code
+          pytest -sv --suppress-no-test-exit-code --cov=python_package
