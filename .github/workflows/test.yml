@@ -22,9 +22,7 @@ jobs:
   setup:
     runs-on: ${{ inputs.os-version }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       - name: Install Python ${{ inputs.python-version }}
         uses: actions/setup-python@v2
         with:
