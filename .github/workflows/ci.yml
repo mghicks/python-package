@@ -18,21 +18,33 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v2
         with:
-          python-version: "3.8"
+          python-version: '3.8'
       - name: flake8 Lint
         uses: py-actions/flake8@v2
 
   test:
     needs: lint
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         os-version: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ['3.7', '3.8', '3.9', '3.10']
+    runs-on: ${{ matrix.os-version }}
 
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/workflows/test.yml
+      - name: Install Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          os-version: ${{ matrix.os-version }}
           python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python --version
+          python -m pip install -U pip
+          pip install flake8 pytest pytest-cov pytest-custom_exit_code
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install package under test
+        run: |
+          pip install -e .
+      - name: Test with pytest
+        run: |
+          pytest -sv --suppress-no-test-exit-code --cov=python_package
