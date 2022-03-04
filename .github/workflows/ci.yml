@@ -6,22 +6,24 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    name: Lint
     steps:
-      - uses: actions/checkout@v2
-      - name: Lint with flake8
-        run: |
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # Github editor is 127 chars wide
-          flake8 . --count --exit-zero --max-line-length=127 --statistics
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
 
   test:
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
