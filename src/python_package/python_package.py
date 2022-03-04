@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 def cwd():
     return Path.cwd()
 

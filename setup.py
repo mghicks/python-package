@@ -1,4 +1,5 @@
 """A setuptools based setup module.
+
 See:
 https://packaging.python.org/guides/distributing-packages-using-setuptools/
 https://github.com/pypa/sampleproject
@@ -77,7 +78,7 @@ setup(
 
     # This should be a valid email address corresponding to the author listed
     # above.
-    #author_email='author@example.com',  # Optional
+    # author_email='author@example.com',  # Optional
 
     # Classifiers help users find your project by categorizing it.
     #
@@ -142,7 +143,7 @@ setup(
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
-    #install_requires=['peppercorn'],  # Optional
+    # install_requires=['peppercorn'],  # Optional
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
@@ -154,13 +155,13 @@ setup(
     # projects.
     extras_require={  # Optional
         'dev': ['check-manifest'],
-        'test': ['pytest','coverage'],
+        'test': ['pytest', 'coverage'],
     },
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.
     package_data={  # Optional
-        #'sample': ['package_data.dat'],
+        # 'sample': ['package_data.dat'],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
@@ -168,7 +169,7 @@ setup(
     # http://docs.python.org/distutils/setupscript.html#installing-additional-files
     #
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
-    #data_files=[('my_data', ['data/data_file'])],  # Optional
+    # data_files=[('my_data', ['data/data_file'])],  # Optional
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
@@ -178,9 +179,9 @@ setup(
     # For example, the following would provide a command called `sample` which
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
-        #'console_scripts': [
-        #    'sample=sample:main',
-        #],
+        # 'console_scripts': [
+        #     'sample=sample:main',
+        # ],
     },
 
     # List additional URLs that are relevant to your project as a dict.
@@ -193,9 +194,9 @@ setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
-        #'Bug Reports': 'https://github.com/pypa/sampleproject/issues',
-        #'Funding': 'https://donate.pypi.org',
-        #'Say Thanks!': 'http://saythanks.io/to/example',
-        #'Source': 'https://github.com/pypa/sampleproject/',
+        # 'Bug Reports': 'https://github.com/pypa/sampleproject/issues',
+        # 'Funding': 'https://donate.pypi.org',
+        # 'Say Thanks!': 'http://saythanks.io/to/example',
+        # 'Source': 'https://github.com/pypa/sampleproject/',
     },
 )
