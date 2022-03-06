@@ -1,5 +1,5 @@
 # python-package
-Example Python package project with workflow
+Example Python package project with GitHub actions
 
 # References
 * https://github.com/pypa/sampleproject
