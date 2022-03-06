@@ -1,5 +1,5 @@
 # python-package
-Starter Python package project with workflow
+Example Python package project with workflow
 
 # References
 * https://github.com/pypa/sampleproject
