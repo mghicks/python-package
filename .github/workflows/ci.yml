@@ -36,15 +36,24 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
+      - name: Install lint and test dependencies
         run: |
           python --version
           python -m pip install -U pip
           pip install flake8 pytest pytest-cov pytest-custom_exit_code
+      - name: Install dependencies (Linux and macOS)
+        if: runner.os == 'Linux' || runner.os == 'macOS'
+        run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          if ([System.IO.File]::Exists("requirements.txt")) {
+            pip install -r requirements.txt
+          }
       - name: Install package under test
         run: |
           pip install -e .
       - name: Test with pytest
         run: |
-          pytest -sv --suppress-no-test-exit-code --cov=python_package
+          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package
