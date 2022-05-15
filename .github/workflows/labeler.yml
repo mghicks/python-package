@@ -2,6 +2,8 @@ name: Labeler
 
 on:
   push:
+    paths:
+      - '.github/labels.yml'
     branches:
       - main
 
