@@ -52,7 +52,7 @@ jobs:
         run: |
           python --version
           python -m pip install -U pip
-          pip install flake8 pytest pytest-cov pytest-custom_exit_code
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Install dependencies (Linux and macOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
@@ -68,4 +68,7 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: |
-          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package
+          FILENAME=$(mktemp)
+          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md $FILENAME
+          echo "# ${{ runner.os }} Python ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
+          cat $FILENAME >> $GITHUB_STEP_SUMMARY
