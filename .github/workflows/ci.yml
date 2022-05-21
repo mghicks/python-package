@@ -71,7 +71,5 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: |
-          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md results.md
-          echo "# ${{ runner.os }} Python ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
-          cat results.md >> $GITHUB_STEP_SUMMARY
+          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md $GITHUB_STEP_SUMMARY
 
