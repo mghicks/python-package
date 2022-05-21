@@ -52,14 +52,17 @@ jobs:
         run: |
           python --version
           python -m pip install -U pip
-          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Install dependencies (Linux and macOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Install dependencies (Windows)
         if: runner.os == 'Windows'
         run: |
+          if ([System.IO.File]::Exists("requirements-dev.txt")) {
+            pip install -r requirements-dev.txt
+          }
           if ([System.IO.File]::Exists("requirements.txt")) {
             pip install -r requirements.txt
           }
@@ -68,7 +71,7 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: |
-          FILENAME=$(mktemp)
-          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md $FILENAME
+          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md results.md
           echo "# ${{ runner.os }} Python ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
-          cat $FILENAME >> $GITHUB_STEP_SUMMARY
+          cat results.md >> $GITHUB_STEP_SUMMARY
+
