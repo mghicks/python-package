@@ -4,3 +4,4 @@ isort
 pytest
 pytest-cov
 pytest-custom_exit_code
+pytest-md
