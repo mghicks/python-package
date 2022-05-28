@@ -2,7 +2,8 @@
 Example Python package project with GitHub actions and dependabot
 
 # References
-* https://github.com/pypa/sampleproject
-* https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs-or-python?langId=py
-* https://github.com/actions/setup-python#readme
-* https://github.com/cjolowicz/cookiecutter-hypermodern-python
+* [pypa/sampleproject](https://github.com/pypa/sampleproject)
+* [docs.github.com](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python)
+* [github.com/actions/setup-python](https://github.com/actions/setup-python#readme)
+* [cjolowicz/cookiecutter-hypermodern-python](https://github.com/cjolowicz/cookiecutter-hypermodern-python)
+* [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)

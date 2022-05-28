@@ -83,4 +83,3 @@ jobs:
           Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
           python -m pytest --suppress-no-test-exit-code --cov=python_package --no-header >> $env:GITHUB_STEP_SUMMARY
           Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
-

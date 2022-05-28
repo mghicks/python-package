@@ -1,0 +1,9 @@
+site_name: Python-package
+repo_url: https://github.com/mghicks/python-package
+theme: 
+  name: material
+
+plugins:
+- autorefs
+- include-markdown
+- mkdocstrings
