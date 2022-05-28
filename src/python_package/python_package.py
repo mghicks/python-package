@@ -1,4 +1,7 @@
-"""This is a trivial Python package used to demonstrate GitHub actions and other integrations."""
+"""
+This is a trivial Python package used to demonstrate GitHub actions
+and other integrations.
+"""
 from pathlib import Path
 
 
