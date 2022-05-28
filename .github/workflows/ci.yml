@@ -72,9 +72,15 @@ jobs:
       - name: Test with pytest
         if: runner.os != 'Windows'
         run: |
-          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          python -m pytest --suppress-no-test-exit-code --cov=python_package --no-header | tee -a $GITHUB_STEP_SUMMARY
+          STATUS = ${PIPESTATUS[0]}
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          exit $STATUS
       - name: Test with pytest
         if: runner.os == 'Windows'
         run: |
-          python -m pytest -sv --suppress-no-test-exit-code --cov=python_package --md $env:GITHUB_STEP_SUMMARY
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+          python -m pytest --suppress-no-test-exit-code --cov=python_package --no-header >> $env:GITHUB_STEP_SUMMARY
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
 
