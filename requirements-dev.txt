@@ -3,7 +3,7 @@ flake8
 isort
 mkdocs-material
 mkdocs-include-markdown-plugin
-mkdocstrings
+mkdocstrings[python]
 pytest
 pytest-cov
 pytest-custom_exit_code
