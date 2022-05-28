@@ -83,3 +83,13 @@ jobs:
           Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
           python -m pytest --suppress-no-test-exit-code --cov=python_package --no-header >> $env:GITHUB_STEP_SUMMARY
           Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+
+  publish-docs:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - run: pip install -r requirements-dev.txt
+      - run: pip install -e .
+      - run: mkdocs gh-deploy --force
