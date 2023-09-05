@@ -16,6 +16,6 @@ jobs:
 
       - name: Run Labeler
         if: ${{ !env.ACT }}
-        uses: crazy-max/ghaction-github-labeler@v4.1.0
+        uses: crazy-max/ghaction-github-labeler@v4.2.0
         with:
           skip-delete: true
